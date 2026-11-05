@@ -202,6 +202,8 @@ class Monster implements NavAgent
 		_layer = world.exeLayer();
 		_player = player;
 
+		Paths.sound("minigame/thevalley/EXE/teleport");
+
 		sprite = new FlxSprite(x, y);
 		sprite.frames = Paths.getSparrowAtlas("minigame/thevalley/characters/exe/exe");
 
@@ -711,6 +713,7 @@ class Monster implements NavAgent
 		_syncSprite();
 		sprite.alpha = 1;
 		sprite.visible = true;
+		_sfx("teleport", 0.5);
 		_rumble(0.006, 0.25, true);
 		_thump(true);
 		executeKill();
@@ -1510,6 +1513,7 @@ class Monster implements NavAgent
 
 	function _blink():Void
 	{
+		_sfx("teleport", 0.35);
 		_blinkTimer = 0.35;
 		_stalkRounds = 0;
 		body.velocity.x = 0;
@@ -1523,7 +1527,9 @@ class Monster implements NavAgent
 			sprite.alpha = Math.max(0, _blinkTimer / 0.35);
 			if (_blinkTimer <= 0)
 			{
-				if (!_teleportNear(_playerFeetX(), _playerFeetY(), 300.0, 700.0, true))
+				if (_playerHidden())
+					_relocate();
+				else if (!_teleportNear(_playerFeetX(), _playerFeetY(), 300.0, 700.0, true))
 					_teleportNear(_playerFeetX(), _playerFeetY(), 200.0, 900.0, false);
 				sprite.alpha = 0;
 			}

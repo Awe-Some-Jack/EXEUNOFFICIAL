@@ -228,6 +228,14 @@ class VideoSprite extends FlxSpriteGroup
 
 			_isLooped = args?.contains(ARG_LOOPING) ?? false;
 
+			#if (mobile && sys)
+			if (!haxe.io.Path.isAbsolute(videoPath) && !sys.FileSystem.exists(videoPath))
+			{
+				final external:String = haxe.io.Path.addTrailingSlash(mobile.backend.MobileUtil.getAssetDirectory()) + videoPath;
+				if (sys.FileSystem.exists(external)) videoPath = external;
+			}
+			#end
+
 			final success = video.load(videoPath, loadArgs);
 			if (success)
 			{

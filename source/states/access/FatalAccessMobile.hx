@@ -930,13 +930,12 @@ Y̸̺͐͊ O̸̱̟͑́͛ U̸͓̼̳͗ Ṛ̵̛̘  ̵̼̆̇̾Ȃ̸͙̂̕ N̸̨̎ S̷�
         errorOpen = true;
 
         if(answer)
-        {
-            FlxG.save.data.fatalGranted = true;
-            backend.EXEAchievements.unlock('fatal');
-        }
+            FatalAccess.grant();
         else
+        {
             FlxG.save.data.fatalDenied = true;
-        FlxG.save.flush();
+            FlxG.save.flush();
+        }
 
         var scene:FatalScene = answer ? FatalScene.GRANTED : FatalScene.DENIED;
         FlxG.sound.music?.stop();

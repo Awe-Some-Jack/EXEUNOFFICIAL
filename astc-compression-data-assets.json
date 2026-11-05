@@ -14,6 +14,10 @@
   "excludes": [
   	"assets/shared/images/minigame/",
     "assets/embed/exe/extras/achievements/icons/",
+    "assets/embed/exe/creditsroll/",
+    "assets/embed/exe/cursor/",
+    "assets/embed/exe/textcheating.webp",
+    "assets/embed/exe/xenocheating.webp",
     "assets/exe/access/majin",
     "assets/exe/extras/bios/characterbios.webp",
     "assets/exe/pause/",

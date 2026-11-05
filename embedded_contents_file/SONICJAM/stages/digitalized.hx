@@ -19,7 +19,7 @@ var canGenerateStars:Bool = true;
 final prefs = ClientPrefs.data;
 
 //mirror shader lol
-var mirror = new ErrorHandledRuntimeShader('MirrorRepeatEffect', File.getContent('contents/SONICJAM/shaders/MirrorRepeatEffect.frag'));
+var mirror = new ErrorHandledRuntimeShader('MirrorRepeatEffect', File.getContent(Paths.mods('SONICJAM/shaders/MirrorRepeatEffect.frag')));
 
 //normal
 var sky:FlxBackdrop;
@@ -340,7 +340,7 @@ function onStepHit() {
 function onCreatePost()
 {
 	if (prefs.shaders) {
-		var fishEye = new ErrorHandledRuntimeShader('fisheye', File.getContent('contents/SONICJAM/shaders/fisheye.frag'));
+		var fishEye = new ErrorHandledRuntimeShader('fisheye', File.getContent(Paths.mods('SONICJAM/shaders/fisheye.frag')));
 		fishEye.setFloat('amount', -0.75);
 
 		mirror.setFloat('zoom', 1);

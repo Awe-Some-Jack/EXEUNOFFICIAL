@@ -333,6 +333,15 @@ function onUpdate(e)
 }
 
 
+var playerIconIsLuther:Bool = false;
+function goodNoteHit(note) {
+	if(note.gfNote == playerIconIsLuther) return;
+
+	playerIconIsLuther = note.gfNote;
+	var icon = game.getLuaObject('iconBF');
+	if(icon != null) icon.changeIcon(playerIconIsLuther ? gf.healthIcon : boyfriend.healthIcon);
+}
+
 function onEvent(n, v1, v2) {
 	var shaderValues = v1.split(',');
     var tweenSettings = v2.split(',');

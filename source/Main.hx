@@ -186,7 +186,13 @@ class Main extends Sprite
 		MobileUtil.initDirectory();
 		#end
 		Sys.setCwd(MobileUtil.getAssetDirectory());
+		#if ios
+		MobileUtil.prepareDocumentsFolder();
+		#end
 		MobileUtil.mountAssets();
+		#if ios
+		MobileUtil.watchHardwareKeyboard();
+		#end
 		#if flixel_animate
 		MobileUtil.initAnimateAssetOverrides();
 		#end
@@ -374,6 +380,8 @@ class Main extends Sprite
 		FlxG.signals.gameResized.add((w, h) -> {
 			if (fpsVar != null)
                 fpsVar.positionFPS(10, 3, Math.min(w / FlxG.width, h / FlxG.height));
+
+			backend.FilterPruner.dropBuffers();
 
 			for (cam in FlxG.cameras?.list) {
 				if (cam?.filters != null)

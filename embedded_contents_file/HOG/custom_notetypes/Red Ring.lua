@@ -27,9 +27,9 @@ end
 
 function onSpawnNote(id,_,nt)
 	if speedMult > 1 and nt == 'Yellow Ring' then
-		setPropertyFromGroup('notes', i, 'texture', 'noteSkins/yellow-ring')
-		setPropertyFromGroup('notes', i, 'earlyHitMult', 1.35)
-		setPropertyFromGroup('notes', i, 'lateHitMult', 1.35)
+		setPropertyFromGroup('notes', id, 'texture', 'noteSkins/yellow-ring')
+		setPropertyFromGroup('notes', id, 'earlyHitMult', 1.35)
+		setPropertyFromGroup('notes', id, 'lateHitMult', 1.35)
 	end
 end
 

@@ -86,7 +86,7 @@ class ExeGameplayState extends ExeBaseOptionsState
 		songs.erase();
 		songs.flush();
 
-		FlxG.save.erase();
+		for (field in Reflect.fields(FlxG.save.data)) Reflect.deleteField(FlxG.save.data, field);
 		FlxG.save.flush();
 
 		backend.Highscore.weekScores.clear();

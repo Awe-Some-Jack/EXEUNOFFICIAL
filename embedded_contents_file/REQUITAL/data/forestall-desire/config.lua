@@ -63,7 +63,12 @@ local dodgeTimerIds = {
     pico = {}
 }
 
-local lastStrumTime = 0
+local ATTACK_TRIGGER_DISTANCE = 100
+local ATTACK_SKIP_AFTER = 350
+
+local attackQueue = {}
+local nextAttack = 1
+local lastBotState = false
 local currentBeat = 0
 
 local hudPositions = {
@@ -305,31 +310,56 @@ function handleKnifeHit(timerTag)
     removeLuaSprite(timerTag:gsub(target, ''), true)
 end
 
-function processAttackNotes()
-    for i = 0, getProperty('notes.length') - 1 do
-        local noteType = getProperty('notes.members['..i..'].noteType')
-        local noteDistance = getProperty('notes.members['..i..'].distance')
-        local noteStrumTime = getProperty('notes.members['..i..'].strumTime')
+local function isAttackNote(noteType)
+    return noteType == 'BFdodge' or noteType == 'PICOdodge' or noteType == 'NoteShoot'
+end
 
-        if noteType == 'BFdodge' or noteType == 'PICOdodge' or noteType == 'NoteShoot' then
-            setProperty('notes.members['..i..'].ignoreNote', not getProperty('cpuControlled'))
-        end
-
-        local shouldTrigger = (downscroll and noteDistance > -100) or (not downscroll and noteDistance < 100)
-
-        if shouldTrigger and lastStrumTime ~= noteStrumTime then
-            local hasAnim = getProperty('notes.members['..i..'].extraData.requitalAnim', true)
-
-            if noteType == 'BFdodge' and hasAnim == nil then
-                setProperty('notes.members['..i..'].extraData.requitalAnim', true, true)
-                createKnife('bf', noteStrumTime)
-                lastStrumTime = noteStrumTime
-            elseif noteType == 'PICOdodge' and hasAnim == nil then
-                setProperty('notes.members['..i..'].extraData.requitalAnim', true, true)
-                createKnife('pico', noteStrumTime)
-                lastStrumTime = noteStrumTime
+local function buildAttackQueue()
+    local seen = {}
+    for i = 0, getProperty('unspawnNotes.length') - 1 do
+        local noteType = getProperty('unspawnNotes['..i..'].noteType')
+        if noteType == 'BFdodge' or noteType == 'PICOdodge' then
+            local strumTime = getProperty('unspawnNotes['..i..'].strumTime')
+            if not seen[strumTime] then
+                seen[strumTime] = true
+                table.insert(attackQueue, {
+                    time = strumTime,
+                    target = noteType == 'BFdodge' and 'bf' or 'pico'
+                })
             end
         end
+    end
+    table.sort(attackQueue, function(a, b) return a.time < b.time end)
+end
+
+function onSpawnNote(id, direction, noteType, isSustainNote)
+    if isAttackNote(noteType) then
+        setProperty('notes.members['..id..'].ignoreNote', not getProperty('cpuControlled'))
+    end
+end
+
+function processAttackNotes()
+    local bot = getProperty('cpuControlled')
+    if bot ~= lastBotState then
+        lastBotState = bot
+        for i = 0, getProperty('notes.length') - 1 do
+            if isAttackNote(getProperty('notes.members['..i..'].noteType')) then
+                setProperty('notes.members['..i..'].ignoreNote', not bot)
+            end
+        end
+    end
+
+    local attack = attackQueue[nextAttack]
+    if attack == nil then return end
+
+    local songPos = getSongPosition()
+    local lead = ATTACK_TRIGGER_DISTANCE / (0.45 * getProperty('songSpeed'))
+    while attack ~= nil and songPos >= attack.time - lead do
+        if songPos - attack.time <= ATTACK_SKIP_AFTER then
+            createKnife(attack.target, attack.time)
+        end
+        nextAttack = nextAttack + 1
+        attack = attackQueue[nextAttack]
     end
 end
 
@@ -337,6 +367,15 @@ function onCreatePost()
     hideDefaultHUD()
     swapStrumPositions()
     setupCustomHUD()
+    updateHUDPositions()
+
+    precacheImage(KNIFE_CONFIG.SPRITE)
+    precacheSound('knife')
+    precacheSound('dodge')
+    precacheSound('shot')
+
+    buildAttackQueue()
+    lastBotState = getProperty('cpuControlled')
 end
 
 function onUpdateScore()
@@ -348,7 +387,6 @@ function onUpdate(elapsed)
         setHealth(-2)
     end
 
-    updateHUDPositions()
     cleanDodgeHits()
     processAttackNotes()
 end
@@ -501,13 +539,15 @@ function cleanDodgeHits()
     local currentTime = getSongPosition()
 
     for target, hits in pairs(dodgeNoteHits) do
-        local newHits = {}
-        for i, hit in ipairs(hits) do
-            if currentTime - hit.time < (DODGE_CONFIG.TIME_WINDOW + 50) then
-                table.insert(newHits, hit)
+        if #hits > 0 then
+            local newHits = {}
+            for i, hit in ipairs(hits) do
+                if currentTime - hit.time < (DODGE_CONFIG.TIME_WINDOW + 50) then
+                    table.insert(newHits, hit)
+                end
             end
+            dodgeNoteHits[target] = newHits
         end
-        dodgeNoteHits[target] = newHits
     end
 end
 

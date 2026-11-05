@@ -115,6 +115,7 @@ function onCreate() {
     matrix.animation.play('idle',true,true);
     matrix.scale.x = 2;
     matrix.scale.y = 2;
+    matrix.spacing.set(-20, -20);
     matrix.antialiasing = false;
     matrix.scrollFactor.set(0.2, 0.2);
     matrix.alpha = 0.00001;

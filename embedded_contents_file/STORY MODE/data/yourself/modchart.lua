@@ -674,7 +674,9 @@ function onEvent(name, value1, value2)
         noteScaleFrom = 1
         noteScaleTo = 1
 
-        showOpponentNotes()
+        if not usesMobileLayout() then
+            showOpponentNotes()
+        end
 
         for i = 0, 3 do
             cancelTimer('playerWaveStart' .. i)

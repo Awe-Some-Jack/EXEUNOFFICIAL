@@ -127,31 +127,29 @@ class EXEAchievements
         final saved:Array<String> = cast(a.extra ?? []);
         final deathList:Array<String> = [for(s in saved) Paths.formatToSongPath(s)];
         final id:String = Paths.formatToSongPath(songId);
-        if(!deathList.contains(id))
-        {
-            deathList.push(id);
-            a.extra = deathList;
+        if(!deathList.contains(id)) deathList.push(id);
+        a.extra = deathList;
 
-            final keepList = WeekData.weeksList;
-            final keepLoaded = WeekData.weeksLoaded;
-            WeekData.weeksLoaded = new Map<String, WeekData>();
-            WeekData.reloadWeekFiles(false);
-            final allSongs:Array<String> = [];
-            for(week in WeekData.weeksLoaded)
-                for(song in week.songs)
-                {
-                    final name:String = Paths.formatToSongPath(song[0]);
-                    if(name != 'stardust-speedway' && name != 'the-valley' && !allSongs.contains(name)) allSongs.push(name);
-                }
-            WeekData.weeksList = keepList;
-            WeekData.weeksLoaded = keepLoaded;
-
-            if(allSongs.length > 0 && Lambda.foreach(allSongs, name -> deathList.contains(name)))
+        final keepList = WeekData.weeksList;
+        final keepLoaded = WeekData.weeksLoaded;
+        final keepStoryMode = PlayState.isStoryMode;
+        WeekData.weeksLoaded = new Map<String, WeekData>();
+        PlayState.isStoryMode = true;
+        WeekData.reloadWeekFiles(true);
+        PlayState.isStoryMode = keepStoryMode;
+        final allSongs:Array<String> = [];
+        for(week in WeekData.weeksLoaded)
+            for(song in week.songs)
             {
-                unlock(a.id);
+                final name:String = Paths.formatToSongPath(song[0]);
+                if(name != 'stardust-speedway' && name != 'the-valley' && !allSongs.contains(name)) allSongs.push(name);
             }
-            save();
-        }
+        WeekData.weeksList = keepList;
+        WeekData.weeksLoaded = keepLoaded;
+
+        if(allSongs.length > 0 && Lambda.foreach(allSongs, name -> deathList.contains(name)))
+            unlock(a.id);
+        save();
     }
 
     public static function save():Void 

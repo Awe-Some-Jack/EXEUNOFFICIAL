@@ -88,7 +88,11 @@ class BIOS extends SonicSubState
 
 	var iconBoundsBox:FlxSprite;
 
-	#if mobile public var cooldownTimer:Float = 0.0; #end
+	#if mobile
+	public var cooldownTimer:Float = 0.0;
+	var _swipedSideways:Bool = false;
+	var _swipedUpDown:Bool = false;
+	#end
 
 	override function create():Void
 	{
@@ -291,7 +295,7 @@ class BIOS extends SonicSubState
 		add(icon);
 
 		charName = new FlxText(460, 34, 0, e0 != null ? e0.displayName : '', 136);
-		charName.setFormat(Paths.font(Language.fontOrCJK('NiseSegaSonic.ttf')), 136, FlxColor.WHITE, CENTER);
+		charName.setFormat(Paths.font(Language.fontOrCJK('NiseSegaSonic.TTF')), 136, FlxColor.WHITE, CENTER);
 		charName.antialiasing = ClientPrefs.data.antialiasing;
 		charName.scale.set(0.5, 0.5);
 		charName.scrollFactor.set();
@@ -299,7 +303,7 @@ class BIOS extends SonicSubState
 		_fitCharName();
 
 		artistName = new FlxText(471, 588, 0, '', 80);
-		artistName.setFormat(Paths.font(Language.fontOrCJK('NiseSegaSonic.ttf')), 80, FlxColor.WHITE, CENTER);
+		artistName.setFormat(Paths.font(Language.fontOrCJK('NiseSegaSonic.TTF')), 80, FlxColor.WHITE, CENTER);
 		artistName.antialiasing = ClientPrefs.data.antialiasing;
 		artistName.scale.set(0.5, 0.5);
 		artistName.scrollFactor.set();
@@ -307,7 +311,7 @@ class BIOS extends SonicSubState
 		if (e0 != null) _setArtists(e0.artist);
 
 		variantDots = new FlxText(0, FlxG.height - 60, 0, '', 44);
-		variantDots.setFormat(Paths.font('NiseSegaSonic.ttf'), 44, FlxColor.WHITE, CENTER);
+		variantDots.setFormat(Paths.font('smallass.TTF'), 44, FlxColor.WHITE, CENTER);
 		variantDots.scale.set(0.5, 0.5);
 		variantDots.scrollFactor.set();
 		variantDots.visible = false;
@@ -328,7 +332,7 @@ class BIOS extends SonicSubState
 		add(bioBox);
 
 		bioTxt = new FlxText(845 + 16, 36 + 13, 407 - 16 - 80, '', Language.cjkSize(23));
-		bioTxt.setFormat(Paths.font(Language.fontOrCJK('smallass.ttf')), Language.cjkSize(23), FlxColor.WHITE, LEFT);
+		bioTxt.setFormat(Paths.font(Language.fontOrCJK('smallass.TTF')), Language.cjkSize(23), FlxColor.WHITE, LEFT);
 		bioTxt.antialiasing = ClientPrefs.data.antialiasing;
 		bioTxt.scrollFactor.set();
 		_bioClipRect.set(0, 0, 407 - 16 - 80, 642 - 13);
@@ -379,7 +383,7 @@ class BIOS extends SonicSubState
 	function _rebuildNames():Void
 	{
 		namesGrp.clear();
-		final font = Paths.font(Language.fontOrCJK('NiseSegaSonic.ttf'));
+		final font = Paths.font(Language.fontOrCJK('NiseSegaSonic.TTF'));
 		final size = Language.cjkSize(68);
 		final aa   = ClientPrefs.data.antialiasing;
 		for (i in 0...entries.length)
@@ -761,16 +765,17 @@ class BIOS extends SonicSubState
 		return null;
 	}
 
-	function _changeEntry(delta:Int):Void
+	function _changeEntry(delta:Int, toLastVariant:Bool = false):Void
 	{
 		#if mobile cooldownTimer = 0.15; #end
 		if (entries.length <= 1) return;
 		virtualIdx += delta;
 		final n = entries.length;
 		curEntry = ((Std.int(Math.round(virtualIdx)) % n) + n) % n;
-		curVariant = 0;
+		final variantCount:Int = entries[curEntry].variants.length;
+		curVariant = (toLastVariant && variantCount > 0) ? variantCount - 1 : 0;
 		FlxG.sound.play(Paths.sound('scrollMenu'), 0.6);
-		_applyEntry(curEntry, 0);
+		_applyEntry(curEntry, curVariant);
 	}
 
 	function _changeVariant(dir:Int):Void
@@ -782,6 +787,19 @@ class BIOS extends SonicSubState
 		FlxG.sound.play(Paths.sound('scrollMenu'), 0.4);
 		_applyEntry(curEntry, curVariant);
 	}
+
+	#if mobile
+	function _swipeCharacter(dir:Int):Void
+	{
+		if (entries.length == 0) return;
+
+		final target:Int = curVariant + dir;
+		if (target >= 0 && target < entries[curEntry].variants.length)
+			_changeVariant(dir);
+		else
+			_changeEntry(dir, dir < 0);
+	}
+	#end
 
 	public function reloadEntries():Void
 	{
@@ -821,14 +839,33 @@ class BIOS extends SonicSubState
 		_updateListScroll(elapsed);
 		_updateBioScroll();
 
+		#if mobile
+		if (!pressHolding)
+		{
+			_swipedSideways = false;
+			_swipedUpDown = false;
+		}
+		#end
+
 		if (entries.length > 1)
 		{
-			if ((FlxG.mouse.deltaWheel.y != 0 #if mobile || (Math.abs(deltaMouseY) >= 5 && pressHolding && cooldownTimer <= 0) #end) && !FlxG.mouse.overlaps(bioBox))
+			if ((FlxG.mouse.deltaWheel.y != 0 #if mobile || ((swipeUP || swipeDOWN) && !_swipedSideways && cooldownTimer <= 0) #end) && !FlxG.mouse.overlaps(bioBox))
+			{
+				#if mobile _swipedUpDown = true; #end
 				_changeEntry(Math.round(#if !mobile -FlxG.mouse.deltaWheel.y #else -deltaMouseY/Math.abs(deltaMouseY) #end));
+			}
 			if (controls.UI_UP_P || controls.UI_DOWN_P) _changeEntry(controls.UI_UP_P ? -1 : 1);
 		}
 
 		if (controls.UI_LEFT_P || controls.UI_RIGHT_P) _changeVariant(controls.UI_LEFT_P ? -1 : 1);
+
+		#if mobile
+		if ((swipeLEFT || swipeRIGHT) && !_swipedSideways && !_swipedUpDown && !FlxG.mouse.overlaps(bioBox))
+		{
+			_swipedSideways = true;
+			_swipeCharacter(swipeLEFT ? 1 : -1);
+		}
+		#end
 
 		if (controls.BACK #if mobile || backPressed #end)
 		{

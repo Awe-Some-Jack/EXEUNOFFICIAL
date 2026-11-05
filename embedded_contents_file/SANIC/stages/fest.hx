@@ -88,8 +88,8 @@ function onCreate()
 	}
 
 	//shaders
-	rgbShit = new ErrorHandledRuntimeShader('Gay', File.getContent('contents/SANIC/shaders/Gay.frag'));
-	brightness = new ErrorHandledRuntimeShader('brightness', File.getContent('contents/SANIC/shaders/brightness.frag'));
+	rgbShit = new ErrorHandledRuntimeShader('Gay', File.getContent(Paths.mods('SANIC/shaders/Gay.frag')));
+	brightness = new ErrorHandledRuntimeShader('brightness', File.getContent(Paths.mods('SANIC/shaders/brightness.frag')));
 	brightness.setFloat('saturation', 1);
 	brightness.setFloat('brightness', 0);
 	brightness.setFloat('contrast', 1);
@@ -171,7 +171,7 @@ function makePreloadedVideo(name:String):VideoSprite
 		video.setGraphicSize(FlxG.width, FlxG.height);
 		video.screenCenter();
 	});
-	video.video.shader = new ErrorHandledRuntimeShader('GreenScreenShader', File.getContent('contents/SANIC/shaders/GreenScreenShader.frag'));
+	video.video.shader = new ErrorHandledRuntimeShader('GreenScreenShader', File.getContent(Paths.mods('SANIC/shaders/GreenScreenShader.frag')));
 	video.onEnd(() -> {
 		remove(video);
 		video.stop();

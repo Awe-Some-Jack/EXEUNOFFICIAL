@@ -175,7 +175,12 @@ class FridgeAccess extends MusicBeatState
 		#end
 
 		#if mobile
+		var buttonCam:FlxCamera = new FlxCamera();
+		buttonCam.bgColor = 0x00000000;
+		FlxG.cameras.add(buttonCam, false);
+
 		createBackButton(FlxG.width - 245, FlxG.height - 710);
+		backButton.camera = buttonCam;
 		backButton.scrollFactor.set(0, 0);
 		#end
 

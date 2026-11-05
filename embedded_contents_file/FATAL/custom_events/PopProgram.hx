@@ -194,7 +194,7 @@ function onCreatePost() {
     FlxG.signals.focusLost.add(onWindowFocusLost);
     FlxG.signals.focusGained.add(onWindowFocusGained);
 
-    var processClass = nativeToolsDisabled ? null : Type.resolveClass('sys.io.Process');
+    var processClass = nativeToolsDisabled ? null : Type.resolveClass('backend.LineProcess');
     if(processClass != null) {
         try {
             var exeName = switch (Sys.systemName()) {
@@ -203,7 +203,7 @@ function onCreatePost() {
                 default: 'CorruptionBar-linux';
             }
             var noArgs:Array<String> = [];
-            var proc = Type.createInstance(processClass, ['contents/FATAL/tools/' + exeName, noArgs]);
+            var proc = Type.createInstance(processClass, ['contents/FATAL/tools/' + exeName, noArgs, false]);
             setVar('corruptionBarProcess', proc);
         } catch (e:Dynamic) {
             trace(e);

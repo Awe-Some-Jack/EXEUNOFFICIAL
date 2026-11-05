@@ -43,4 +43,44 @@ function onCreatePost()
         end
         addLuaSprite(urmom.name, urmom.front)
     end
+
+    local spiralSource = getTextFromFile('shaders/uhOh.frag')
+    if shadersEnabled and not lowQuality and spiralSource and string.find(spiralSource, 'spiralFade', 1, true) then
+        makeLuaSprite('spiralBG')
+        makeGraphic('spiralBG', screenWidth, screenHeight, 'FFFFFF')
+        scaleObject('spiralBG', 3, 3)
+        setScrollFactor('spiralBG', 0, 0)
+        screenCenter('spiralBG')
+        setSpriteShader('spiralBG', 'uhOh')
+        addLuaSprite('spiralBG', false)
+        setObjectOrder('spiralBG', getObjectOrder('trees'))
+        setProperty('spiralBG.alpha', 0)
+        spiralReady = true
+    end
+end
+
+local spiralTime = 0
+local spiralScroll = 0
+local spiralShown = false
+function onUpdate(elapsed)
+    if spiralReady then
+        local inRange = curStep >= 792 and curStep < 1048
+        if inRange ~= spiralShown then
+            spiralShown = inRange
+            cancelTween('spiralFade')
+            doTweenAlpha('spiralFade', 'spiralBG', inRange and 1 or 0, 1.5, 'linear')
+        end
+
+        local progress = math.max(0, math.min(1, (curStep - 792) / (1048 - 792)))
+        local speed = 1 + 2 * progress
+
+        spiralTime = spiralTime + elapsed * speed
+        if inRange then
+            spiralScroll = spiralScroll + elapsed * 0.5 * speed
+        end
+
+        setShaderFloat('spiralBG', 'iTime', spiralTime)
+        setShaderFloat('spiralBG', 'spiralScroll', spiralScroll)
+        setShaderFloat('spiralBG', 'spiralFade', getProperty('spiralBG.alpha'))
+    end
 end

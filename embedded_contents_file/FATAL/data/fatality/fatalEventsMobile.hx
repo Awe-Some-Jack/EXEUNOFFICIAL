@@ -118,7 +118,7 @@ function canMoveWindow():Bool return true;
 
 function beginMotion(mode:String) {
     if(windowMode == null) {
-        boxCams = [camGame, camVideo, camHUD, camOther];
+        boxCams = [camGame, camVideo, camHUD];
         baseCamX = [];
         baseCamY = [];
         for(c in boxCams) {

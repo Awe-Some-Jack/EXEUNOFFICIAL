@@ -341,14 +341,14 @@ class StoryModeState extends MusicBeatState
 			s.color = 0xFF666666;
 
 		rankText = new FlxText(0, 0, 0, Language.get("freeplay.rank", 'RANK') + ": ?");
-		rankText.setFormat(Paths.font("NiseSegaSonic.ttf"), 20, 0xFFA87E7E, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+		rankText.setFormat(Paths.font("NiseSegaSonic.TTF"), 20, 0xFFA87E7E, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		rankText.borderSize = 2;
 		rankText.antialiasing = ClientPrefs.data.antialiasing;
 		rankText.visible = false;
 		add(rankText);
 
 		scoreText = new FlxText(0, 0, 0, Language.get("freeplay.score", 'SCORE') + ": 0");
-		scoreText.setFormat(Paths.font("NiseSegaSonic.ttf"), 20, 0xFFA87E7E, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+		scoreText.setFormat(Paths.font("NiseSegaSonic.TTF"), 20, 0xFFA87E7E, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		scoreText.borderSize = 2;
 		scoreText.antialiasing = ClientPrefs.data.antialiasing;
 		scoreText.visible = false;

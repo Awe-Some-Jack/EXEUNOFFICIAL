@@ -179,6 +179,7 @@ class ExeGameJoltState extends ExeBaseOptionsState
 
 	var _typingBuf:String = '';
 	var _pendingChars:Array<String> = [];
+	var _typingTapArmed:Bool = false;
 
 	function _onTextInput(e:TextEvent):Void
 	{
@@ -292,6 +293,7 @@ class ExeGameJoltState extends ExeBaseOptionsState
 		typingUser    = user;
 		_typingBuf    = user ? usernameInput : tokenInput;
 		_pendingChars = [];
+		_typingTapArmed = false;
 		isTyping      = true;
 		FlxG.stage.window.textInputEnabled = true;
 		FlxG.sound.play(Paths.sound('scrollMenu'));
@@ -306,8 +308,17 @@ class ExeGameJoltState extends ExeBaseOptionsState
 
 	function _handleTyping():Void
 	{
-		if (FlxG.keys.justPressed.ENTER || FlxG.keys.justPressed.ESCAPE)
+		var tapped:Bool = false;
+		#if mobile
+		for (t in FlxG.touches.list)
 		{
+			if (t.justPressed) _typingTapArmed = true;
+			if (t.justReleased && _typingTapArmed) tapped = true;
+		}
+		#end
+		if (FlxG.keys.justPressed.ENTER || FlxG.keys.justPressed.ESCAPE || tapped)
+		{
+			_typingTapArmed = false;
 			if (typingUser) usernameInput = _typingBuf;
 			else            tokenInput    = _typingBuf;
 			_stopTyping();

@@ -212,6 +212,20 @@ class MobileUtil
 	}
 	#end
 
+	#if ios
+	public static function prepareDocumentsFolder():Void
+	{
+		final readme:String = Path.join([getAssetDirectory(), 'README.txt']);
+		try
+		{
+			if (!FileSystem.exists(readme))
+				File.saveContent(readme, 'Copy the "assets" and "contents" folders from the game download into this folder.\n');
+		}
+		catch (e:Dynamic)
+			trace('Could not write $readme ($e)');
+	}
+	#end
+
 	@:access(lime.utils.AssetLibrary)
 	public static function mountAssets():Void
 	{
@@ -219,11 +233,18 @@ class MobileUtil
 		final rootDirectory:String = getAssetDirectory();
 		final assetsRoot:String = Path.join([rootDirectory, 'assets']);
 
-		if (!FileSystem.exists(assetsRoot) || !FileSystem.isDirectory(assetsRoot))
+		final hasAssets = () -> FileSystem.exists(assetsRoot) && FileSystem.isDirectory(assetsRoot);
+
+		if (!hasAssets())
 		{
 			trace('Assets folder not found: $assetsRoot');
-			Application.current.window.alert('Assets folder not found.\nCopy the "assets" folder from export/mobile-contents into:\n' + rootDirectory, 'Missing assets');
-			return;
+			Application.current.window.alert('Assets folder not found.\nCopy the "assets" & "contents" folders from the zip file into:\n' + rootDirectory + '\n\nThe game will now close.', 'Missing assets');
+
+			if (!hasAssets())
+			{
+				System.exit(1);
+				return;
+			}
 		}
 
 		final library = Assets.getLibrary('default');
@@ -363,9 +384,26 @@ class MobileUtil
 	}
 	#end
 
+	#if ios
+	static var _hardwareKeyboardSeen:Bool = false;
+	static var _watchingHardwareKeyboard:Bool = false;
+
+	public static function watchHardwareKeyboard():Void
+	{
+		if (_watchingHardwareKeyboard) return;
+		_watchingHardwareKeyboard = true;
+		openfl.Lib.current.stage.addEventListener(openfl.events.KeyboardEvent.KEY_DOWN, (_) -> {
+			final window = Application.current?.window;
+			if (window != null && !window.textInputEnabled) _hardwareKeyboardSeen = true;
+		});
+	}
+	#end
+
 	public static function hasPhysicalKeyboard():Bool
 	{
-		#if android
+		#if ios
+		if (_hardwareKeyboardSeen) return true;
+		#elseif android
 		try {
 			final getDeviceIds:Null<Dynamic> = extension.androidtools.jni.JNICache.createStaticMethod('android/view/InputDevice', 'getDeviceIds', '()[I');
 			final getDevice:Null<Dynamic> = extension.androidtools.jni.JNICache.createStaticMethod('android/view/InputDevice', 'getDevice', '(I)Landroid/view/InputDevice;');

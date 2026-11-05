@@ -2550,6 +2550,7 @@ class PlayState extends MusicBeatState
 		updateControlsVisibility();
 		for(i in 0...4) {
 			final ownerId = hitboxOwner[i];
+			if(ownerId == -1 && !hitboxesHeld[i]) continue;
 			final ownerHeld = ownerId != -1 && pointerHeld(ownerId);
 			final overHitbox = ownerHeld && pointerOverlapsHitbox(ownerId, i);
 			if(!ownerHeld || (!overHitbox && !ClientPrefs.data.slideMechanic) || (!overHitbox && !noteSlide[i] && ClientPrefs.data.slideMechanic)) {
@@ -3616,6 +3617,7 @@ class PlayState extends MusicBeatState
 		{
 			states.SoundTest.enterTheValleyAfterBlackSun = false;
 			minigames.thevalley.TheValley.fromFreeplay = false;
+			minigames.thevalley.TheValley.deaths = 0;
 			storyPlaylist = [];
 			isStoryMode = false;
 			FlxG.sound.music?.stop();

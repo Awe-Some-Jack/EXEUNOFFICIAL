@@ -233,11 +233,18 @@ class MobileUtil
 		final rootDirectory:String = getAssetDirectory();
 		final assetsRoot:String = Path.join([rootDirectory, 'assets']);
 
-		if (!FileSystem.exists(assetsRoot) || !FileSystem.isDirectory(assetsRoot))
+		final hasAssets = () -> FileSystem.exists(assetsRoot) && FileSystem.isDirectory(assetsRoot);
+
+		if (!hasAssets())
 		{
 			trace('Assets folder not found: $assetsRoot');
-			Application.current.window.alert('Assets folder not found.\nCopy the "assets" folder from export/mobile-contents into:\n' + rootDirectory, 'Missing assets');
-			return;
+			Application.current.window.alert('Assets folder not found.\nCopy the "assets" & "contents" folders from the zip file into:\n' + rootDirectory + '\n\nThe game will now close.', 'Missing assets');
+
+			if (!hasAssets())
+			{
+				System.exit(1);
+				return;
+			}
 		}
 
 		final library = Assets.getLibrary('default');

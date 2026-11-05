@@ -3,6 +3,10 @@ package backend;
 import flixel.FlxCamera;
 import flixel.FlxG;
 import flixel.addons.display.FlxRuntimeShader;
+import openfl.display.Bitmap;
+import openfl.display.BitmapData;
+import openfl.display.DisplayObjectRenderer;
+import openfl.geom.ColorTransform;
 import openfl.geom.Matrix;
 import openfl.geom.Rectangle;
 import openfl.filters.BitmapFilter;
@@ -47,6 +51,18 @@ private class ScaleState
 	public function new() {}
 }
 
+private class BufferStash
+{
+	public var bitmap:Bitmap;
+	public var data:BitmapData;
+	public var data2:BitmapData;
+	public var data3:BitmapData;
+	public var colorTransform:ColorTransform;
+	public var renderer:DisplayObjectRenderer;
+
+	public function new() {}
+}
+
 class FilterPruner
 {
 	static final EPSILON:Float = 0.000001;
@@ -54,6 +70,7 @@ class FilterPruner
 	static var groups:Map<FlxCamera, PrunedGroup> = new Map();
 	static var scales:Map<FlxCamera, Float> = new Map();
 	static var states:Map<FlxCamera, ScaleState> = new Map();
+	static var stashes:Map<FlxCamera, BufferStash> = new Map();
 	static var scaleHooked:Bool = false;
 	static var pollHooked:Bool = false;
 	static var byShader:Map<FlxRuntimeShader, Array<PrunedEntry>> = new Map();
@@ -163,7 +180,6 @@ class FilterPruner
 			if (group == null)
 			{
 				group = new PrunedGroup(camera);
-				camera.flashSprite.cacheAsBitmap = true;
 				groups.set(camera, group);
 			}
 
@@ -215,12 +231,17 @@ class FilterPruner
 		}
 	}
 
+	public static function dropBuffers():Void
+	{
+		for (camera => stash in stashes)
+			disposeStash(camera, stash);
+
+		stashes.clear();
+	}
+
 	public static function clear():Void
 	{
-		for (group in groups)
-			if (group.camera.flashSprite != null)
-				group.camera.flashSprite.cacheAsBitmap = false;
-
+		dropBuffers();
 		groups.clear();
 		byShader.clear();
 
@@ -291,7 +312,7 @@ class FilterPruner
 		}
 
 		final filtered:Bool = camera.filtersEnabled && camera.filters != null && camera.filters.length > 0;
-		if (filtered || sprite.cacheAsBitmap)
+		if (filtered)
 		{
 			final bounds:Rectangle = new Rectangle();
 			sprite.__getFilterBounds(bounds, new Matrix(a, 0, 0, d));
@@ -334,6 +355,61 @@ class FilterPruner
 		final managed:Array<BitmapFilter> = [for (entry in group.entries) entry.filter];
 		final extras:Array<BitmapFilter> = [for (filter in (group.camera.filters ?? [])) if (managed.indexOf(filter) < 0 && !isManagedShader(filter)) filter];
 		final active:Array<BitmapFilter> = [for (entry in group.entries) if (entry.active) entry.filter];
-		group.camera.filters = active.concat(extras);
+		final filters:Array<BitmapFilter> = active.concat(extras);
+
+		if (filters.length > 0) restoreBuffers(group.camera);
+		else stashBuffers(group.camera);
+
+		group.camera.filters = filters;
+	}
+
+	@:access(openfl.display.DisplayObject)
+	static function stashBuffers(camera:FlxCamera):Void
+	{
+		final sprite = camera.flashSprite;
+		if (sprite == null || sprite.__cacheBitmap == null) return;
+
+		final previous:BufferStash = stashes.get(camera);
+		if (previous != null) disposeStash(camera, previous);
+
+		final stash:BufferStash = new BufferStash();
+		stash.bitmap = sprite.__cacheBitmap;
+		stash.data = sprite.__cacheBitmapData;
+		stash.data2 = sprite.__cacheBitmapData2;
+		stash.data3 = sprite.__cacheBitmapData3;
+		stash.colorTransform = sprite.__cacheBitmapColorTransform;
+		stash.renderer = sprite.__cacheBitmapRenderer;
+		stashes.set(camera, stash);
+	}
+
+	@:access(openfl.display.DisplayObject)
+	static function restoreBuffers(camera:FlxCamera):Void
+	{
+		final sprite = camera.flashSprite;
+		final stash:BufferStash = stashes.get(camera);
+		if (sprite == null || stash == null) return;
+
+		if (sprite.__cacheBitmap != null)
+		{
+			if (sprite.__cacheBitmap == stash.bitmap) stashes.remove(camera);
+			return;
+		}
+
+		stashes.remove(camera);
+		sprite.__cacheBitmap = stash.bitmap;
+		sprite.__cacheBitmapData = stash.data;
+		sprite.__cacheBitmapData2 = stash.data2;
+		sprite.__cacheBitmapData3 = stash.data3;
+		sprite.__cacheBitmapColorTransform = stash.colorTransform;
+		sprite.__cacheBitmapRenderer = stash.renderer;
+	}
+
+	@:access(openfl.display.DisplayObject)
+	static function disposeStash(camera:FlxCamera, stash:BufferStash):Void
+	{
+		if (camera.flashSprite != null && camera.flashSprite.__cacheBitmap == stash.bitmap) return;
+
+		for (data in [stash.data, stash.data2, stash.data3])
+			data?.dispose();
 	}
 }

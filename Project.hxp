@@ -928,7 +928,7 @@ class Project extends HXProject
                     asset.library = library;
                     asset.embed = embed;
                     if (Path.extension(fullPath) == 'astc')
-                        asset.type = AssetType.IMAGE;
+                        asset.type = embed ? AssetType.BINARY : AssetType.IMAGE;
                     assets.push(asset);
                 }
             }

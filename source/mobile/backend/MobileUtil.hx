@@ -212,7 +212,6 @@ class MobileUtil
 	}
 	#end
 
-	@:access(lime.utils.AssetLibrary)
 	#if ios
 	public static function prepareDocumentsFolder():Void
 	{
@@ -227,6 +226,7 @@ class MobileUtil
 	}
 	#end
 
+	@:access(lime.utils.AssetLibrary)
 	public static function mountAssets():Void
 	{
 		#if (mobile && sys)

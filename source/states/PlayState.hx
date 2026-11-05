@@ -3795,7 +3795,7 @@ class PlayState extends MusicBeatState
         save.data.songs ??= [];
         var unlocked:Array<String> = save.data.songs;
 
-        if (states.SoundTest.fromSoundTest || states.access.FridgeAccess.fromFridge || states.access.MajinAccess.fromMajin || states.EXEMenu.secretSong || isStoryMode || ['mania', 'fatality', 'burning', 'godspeed'].contains(formattedSong))
+        if (states.SoundTest.fromSoundTest || states.access.FridgeAccess.fromFridge || states.access.MajinAccess.fromMajin || states.EXEMenu.secretSong || isStoryMode || ['mania', 'fatality', 'burning', 'godspeed', 'expulsion'].contains(formattedSong))
         {
             states.EXEMenu.secretSong = false;
 

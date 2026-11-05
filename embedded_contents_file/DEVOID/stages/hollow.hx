@@ -12,6 +12,19 @@ final bg:Array<BackgroundSprite> = [
 	{path: 'hollow/fg', position: [300, 300], scroll: [1.2, 1.2], front: true}
 ];
 
+final _trailPoolSize:Int = 8;
+var _trails:Array<Character> = [];
+var _trailTweens:Array<FlxTween> = [];
+var _nextTrail:Int = 0;
+
+final _badnickPoolSize:Int = 8;
+var _badnicks:Array<FlxSprite> = [];
+var _badnickTweens:Array<FlxTween> = [];
+var _badnickOffsets:Array<Array<Float>> = [];
+
+var _dadHardMode:Bool = false;
+var _startSpawning:Bool = false;
+
 function onCreate()
 {
 	makeBackground(bg);
@@ -54,10 +67,6 @@ function opponentNoteHit(note)
 	if (curStep >= 1568 && curStep < 1824) spawnTrail();
 }
 
-final _trailPoolSize:Int = 8;
-var _trails:Array<Character> = [];
-var _trailTweens:Array<FlxTween> = [];
-var _nextTrail:Int = 0;
 function spawnTrail()
 {
 	if (dad.animation.curAnim == null) return;
@@ -83,10 +92,6 @@ function spawnTrail()
 	}});
 }
 
-final _badnickPoolSize:Int = 8;
-var _badnicks:Array<FlxSprite> = [];
-var _badnickTweens:Array<FlxTween> = [];
-var _badnickOffsets:Array<Array<Float>> = [];
 function createBadnickPool()
 {
 	for (i in 0..._badnickPoolSize)
@@ -119,8 +124,6 @@ function releaseOffscreenBadnicks()
 	}
 }
 
-var _dadHardMode:Bool = false;
-var _startSpawning:Bool = false;
 function onEvent(n, v1)
 {
 	if (n == 'BG Freaks Expression') _dadHardMode = !_dadHardMode;

@@ -378,8 +378,8 @@ class FatalAccess extends MusicBeatState
 				_line("GOOD", '', 3.1, 1, 0.12, 0.06, 0.76, 0.3, 0, 0, 0, true, true)
 			];
 			case REMINDER: [
-				_line("you have your task...", 'reminder1', 2.2, 2, 0.06, 0.26, 0.88, 0.48, 0, 0, 0, false),
-				_line("DO NOT MAKE ME REMIND YOU AGAIN!!", 'reminder2', 3.4, 1, 0.26, 0.06, 0.47, 0.26, 0, 0, 0, true, true)
+				_line("you have your task...", '', 2.2, 2, 0.06, 0.26, 0.88, 0.48, 0, 0, 0, false),
+				_line("DO NOT MAKE ME REMIND YOU AGAIN!!", '', 3.4, 1, 0.26, 0.06, 0.47, 0.26, 0, 0, 0, true, true)
 			];
 			default: [
 				_line("I didnt think you would even show up", '', 3.8, 0, 0.56, 0.63, 0.41, 0.23),
@@ -733,12 +733,10 @@ class FatalAccess extends MusicBeatState
 					_at(end, () -> _noise(kind));
 					end += 0.5;
 				}
-				final voice = _sound('assets/exe/access/fatal/voices/${line.sound}.ogg');
-				_at(end, () -> _playLine(line, voice));
-				end += voice != null ? voice.length / 1000 + 0.5 : line.dur;
+				_at(end, () -> _playLine(line, null));
+				end += line.dur;
 			}
 			_at(end, () -> {
-				_voice?.stop();
 				_noise(1);
 				if (_scene != GRANTED) _startMelt(1);
 			});

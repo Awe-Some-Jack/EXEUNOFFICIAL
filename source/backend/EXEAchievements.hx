@@ -174,7 +174,7 @@ class EXEAchievements
     public static function checkSongCompletion(songId:String, misses:Int, ratingPercent:Float):Void
     {
         if(ratingPercent >= 1.0 && misses == 0) unlock('hyper');
-        if(ratingPercent >= 0.8) incrementCount('super', 5);
+        if(ratingPercent >= 0.75) incrementCount('super', 5);
 
         for (achieveId => songList in achievementSongGroups)
         {
@@ -236,7 +236,7 @@ class EXEAchievements
         if (Lambda.foreach(SECONDARY_CODES, req -> Lambda.exists(codes, c -> c[0] == req[0] && c[1] == req[1]))) 
         {
             unlock(a.id);
-            save();
         }
+        save();
     }
 }

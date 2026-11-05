@@ -152,6 +152,35 @@ function spawnPopup(ignoreLimit:Bool) {
 
     var vol = FlxG.sound.muted ? 0.0 : FlxG.sound.volume;
     popupHost.send((ignoreLimit ? 'flood:' : 'spawn:') + vol);
+
+    if(!ignoreLimit && FlxG.random.bool(0.4)) showSecretPopup();
+}
+
+function showSecretPopup() {
+    FlxG.sound.play(Paths.sound('tumbalacasamami'), 0.5);
+    EXEAchievements.unlock('tumbalacasamami');
+    EXEAchievements.save();
+
+    var popup:FlxSprite = new FlxSprite();
+    popup.frames = Paths.getSparrowAtlas('fatality/newPopups/popup-variant-9');
+    popup.animation.addByPrefix('intro', 'intro', 12, false);
+    popup.animation.addByPrefix('end', 'end', 12, false);
+    popup.animation.play('intro', true);
+    popup.antialiasing = false;
+    popup.scrollFactor.set();
+    popup.setPosition(FlxG.random.int(0, Std.int(FlxG.width - popup.width)), FlxG.random.int(0, Std.int(FlxG.height - popup.height)));
+    var popupCamera = getVar('popupCam');
+    if(popupCamera == null) popupCamera = game.camOther;
+    popup.cameras = [popupCamera];
+    game.add(popup);
+
+    new FlxTimer().start(3, function(_) {
+        popup.animation.onFinish.addOnce(function(_) {
+            game.remove(popup, true);
+            popup.destroy();
+        });
+        popup.animation.play('end', true);
+    });
 }
 
 function closeAllPopups() {

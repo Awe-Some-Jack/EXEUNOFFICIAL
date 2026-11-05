@@ -91,8 +91,43 @@ end
 
 local curKey = 1
 local code = 'byebye'
-function onUpdatePost()
+local mobileOnly = (buildTarget == 'ios' or buildTarget == 'android')
+local iconTaps = 0
+local iconTapTime = 0
+
+function onCreatePost()
+    if not mobileOnly then return end
+    runHaxeCode([[
+        function byeByeIconTapped():Bool {
+            var icon = getVar('iconOpp');
+            if (icon == null) return false;
+            for (touch in FlxG.touches.list)
+                if (touch.justPressed && touch.overlaps(icon, game.camHUD)) return true;
+            return false;
+        }
+    ]])
+end
+
+local function checkIconTaps(elapsed)
+    if iconTapTime > 0 then
+        iconTapTime = iconTapTime - elapsed
+        if iconTapTime <= 0 then iconTaps = 0 end
+    end
+    if runHaxeFunction('byeByeIconTapped') then
+        if iconTaps == 0 then iconTapTime = 2 end
+        iconTaps = iconTaps + 1
+        if iconTaps >= 6 then
+            iconTaps = 0
+            iconTapTime = 0
+            playSound('ringSound')
+            byeByeActivated = true
+        end
+    end
+end
+
+function onUpdatePost(elapsed)
     if curBeat < 272 then
+        if mobileOnly and not byeByeActivated then checkIconTaps(elapsed) end
         if keyboardJustPressed(code:sub(curKey, curKey):upper()) then
             curKey = curKey + 1
         end

@@ -985,6 +985,7 @@ class TheValley extends MusicBeatState implements ExeWorld
 	{
 		hud.addPoints(-500, "DEATH");
 		hud.lives--;
+		deaths++;
 		if (hud.lives <= 0)
 		{
 			_startGameOver();
@@ -1021,9 +1022,13 @@ class TheValley extends MusicBeatState implements ExeWorld
 		if (FlxG.sound.music != null) FlxG.sound.music.stop();
 		for (snd in FlxG.sound.list) if (snd != null && snd.looped && snd.playing) snd.stop();
 		bgCam.visible = false;
-		deaths++;
-		if (cutsceneReplay == null && deaths % SUNKY_HELP_DEATHS == 0)
+		if (cutsceneReplay == null && deaths >= SUNKY_HELP_DEATHS)
 		{
+			deaths = 0;
+			persistentUpdate = false;
+			persistentDraw = true;
+			final nape = FlxG.plugins.get(FlxNapeSpace);
+			if (nape != null) nape.active = false;
 			final byExe = _lastDeathByExe;
 			final spikes = _lastDeathBySpikes;
 			openSubState(new states.substates.SunkySubstate(accepted -> {

@@ -15,7 +15,7 @@ end
 
 function noteMiss(id,nd,nt,isn)
 	if not isn and nt == 'Static Note' then
-		if getVar('rings') > 0 then updateRingCounter(-1) return end
+		if (getVar('rings') or 0) > 0 then callOnScripts('updateRingCounter', {-1}) return end
 		setProperty('staticnotething.visible', true)
 		runTimer('staticbyelol', 0.35)
 		playSound('hitStatic1', getRandomFloat(0.4,0.8))
